@@ -26,8 +26,8 @@ export default function NotificationPanel() {
   const [notifications, setNotifications] = useState<Notification[]>([
     {
       id: 1,
-      title: 'Novo interesse',
-      message: 'José quer contratar os seus serviços. Clique para ver o perfil e decidir.',
+      title: 'New interest',
+      message: 'José wants to hire your services. Click to view profile and decide.',
       date: '2024-11-23T10:00:00',
       read: false,
       type: 'match',
@@ -71,10 +71,10 @@ export default function NotificationPanel() {
     const now = new Date()
     const diffInHours = Math.floor((now.getTime() - date.getTime()) / (1000 * 60 * 60))
     
-    if (diffInHours < 1) return 'Agora'
-    if (diffInHours < 24) return `${diffInHours}h atrás`
+    if (diffInHours < 1) return 'Now'
+    if (diffInHours < 24) return `${diffInHours}h ago`
     const diffInDays = Math.floor(diffInHours / 24)
-    return `${diffInDays}d atrás`
+    return `${diffInDays}d ago`
   }
 
   const getNotificationIcon = (type: Notification['type']) => {
@@ -102,7 +102,7 @@ export default function NotificationPanel() {
       </PopoverTrigger>
       <PopoverContent className="w-96 p-0" align="end">
         <div className="flex items-center justify-between p-4 border-b">
-          <h3 className="font-semibold">Notificações</h3>
+          <h3 className="font-semibold">Notifications</h3>
           {unreadCount > 0 && (
             <Button 
               variant="ghost" 
@@ -110,7 +110,7 @@ export default function NotificationPanel() {
               onClick={markAllAsRead}
               className="text-sm text-blue-600 hover:text-blue-700"
             >
-              Marcar todas como lidas
+              Mark all as read
             </Button>
           )}
         </div>
@@ -119,7 +119,7 @@ export default function NotificationPanel() {
             <div className="divide-y">
               {notifications.map((notification) => (
                 <Link 
-                  href={notification.patientId ? `/pacientes/${notification.patientId}` : '#'}
+                  href={notification.patientId ? `/patients/${notification.patientId}` : '#'}
                   key={notification.id}
                   onClick={() => markAsRead(notification.id)}
                 >
@@ -146,7 +146,7 @@ export default function NotificationPanel() {
                               className="bg-green-600 hover:bg-green-700 text-white"
                               onClick={(e) => handleAccept(e, notification.id)}
                             >
-                              Aceitar
+                              Accept
                             </Button>
                             <Button
                               size="sm"
@@ -154,15 +154,15 @@ export default function NotificationPanel() {
                               className="text-red-600 border-red-600 hover:bg-red-50"
                               onClick={(e) => handleDecline(e, notification.id)}
                             >
-                              Recusar
+                              Decline
                             </Button>
                           </div>
                         )}
                         {notification.status === 'accepted' && (
-                          <p className="text-sm text-green-600">Aceito ✓</p>
+                          <p className="text-sm text-green-600">Accepted ✓</p>
                         )}
                         {notification.status === 'declined' && (
-                          <p className="text-sm text-red-600">Recusado ✗</p>
+                          <p className="text-sm text-red-600">Declined ✗</p>
                         )}
                       </div>
                     </div>
@@ -172,7 +172,7 @@ export default function NotificationPanel() {
             </div>
           ) : (
             <div className="p-4 text-center text-gray-500">
-              Nenhuma notificação
+              No notifications
             </div>
           )}
         </div>

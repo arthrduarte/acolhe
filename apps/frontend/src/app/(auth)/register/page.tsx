@@ -10,7 +10,7 @@ import { Textarea } from "@/components/ui/textarea"
 import Link from 'next/link'
 import { toast } from '@/hooks/use-toast'
 
-export default function CadastroPage() {
+export default function RegisterPage() {
   const [isCuidador, setIsCuidador] = useState(true)
   const [formData, setFormData] = useState({
     nome: '',
@@ -37,8 +37,8 @@ export default function CadastroPage() {
     e.preventDefault()
     if (formData.senha !== formData.confirmarSenha) {
         toast({
-            title: 'Erro na validação',
-            description: 'As senhas não correspondem. Por favor, verifique e tente novamente.',
+            title: 'Validation Error',
+            description: 'Passwords do not match. Please check and try again.',
             variant: 'destructive',
         })
         return
@@ -50,9 +50,9 @@ export default function CadastroPage() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl font-bold text-center">Cadastro no Acolhe</CardTitle>
+          <CardTitle className="text-2xl font-bold text-center">Sign up for Acolhe</CardTitle>
           <CardDescription className="text-center">
-            Crie sua conta para começar a usar a plataforma
+            Create your account to start using the platform
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -66,7 +66,7 @@ export default function CadastroPage() {
                 }`}
                 onClick={() => setIsCuidador(true)}
               >
-                Sou cuidador
+                I am a caregiver
               </Button>
               <Button
                 type="button"
@@ -76,12 +76,12 @@ export default function CadastroPage() {
                 }`}
                 onClick={() => setIsCuidador(false)}
               >
-                Busco cuidador
+                Looking for a caregiver
               </Button>
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="nome">Nome completo</Label>
+              <Label htmlFor="nome">Full name</Label>
               <Input 
                 id="nome" 
                 name="nome"
@@ -104,7 +104,7 @@ export default function CadastroPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="senha">Senha</Label>
+              <Label htmlFor="senha">Password</Label>
               <Input 
                 id="senha" 
                 name="senha"
@@ -116,7 +116,7 @@ export default function CadastroPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="confirmarSenha">Confirmar senha</Label>
+              <Label htmlFor="confirmarSenha">Confirm password</Label>
               <Input 
                 id="confirmarSenha" 
                 name="confirmarSenha"
@@ -128,7 +128,7 @@ export default function CadastroPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="celular">Celular (WhatsApp)</Label>
+              <Label htmlFor="celular">Phone (WhatsApp)</Label>
               <Input 
                 id="celular" 
                 name="celular"
@@ -140,7 +140,7 @@ export default function CadastroPage() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="endereco">Endereço completo</Label>
+              <Label htmlFor="endereco">Full address</Label>
               <Input 
                 id="endereco" 
                 name="endereco"
@@ -152,35 +152,35 @@ export default function CadastroPage() {
 
             {isCuidador ? (
               <div className="space-y-2">
-                <Label htmlFor="especialidade">Especialidade</Label>
+                <Label htmlFor="especialidade">Specialty</Label>
                 <Select onValueChange={handleSelectChange('especialidade')}>
                   <SelectTrigger>
-                    <SelectValue placeholder="Selecione sua especialidade" />
+                    <SelectValue placeholder="Select your specialty" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="parcialmente">Parcialmente dependente</SelectItem>
-                    <SelectItem value="totalmente">Totalmente dependente</SelectItem>
-                    <SelectItem value="independente">Não é dependente</SelectItem>
+                    <SelectItem value="parcialmente">Partially dependent</SelectItem>
+                    <SelectItem value="totalmente">Fully dependent</SelectItem>
+                    <SelectItem value="independente">Not dependent</SelectItem>
                   </SelectContent>
                 </Select>
               </div>
             ) : (
               <>
                 <div className="space-y-2">
-                  <Label htmlFor="condicaoPaciente">Condição do paciente</Label>
+                  <Label htmlFor="condicaoPaciente">Patient's condition</Label>
                   <Select onValueChange={handleSelectChange('condicaoPaciente')}>
                     <SelectTrigger>
-                      <SelectValue placeholder="Selecione a condição" />
+                      <SelectValue placeholder="Select condition" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="parcial">Parcialmente dependente</SelectItem>
-                      <SelectItem value="total">Totalmente dependente</SelectItem>
-                      <SelectItem value="independente">Não é dependente</SelectItem>
+                      <SelectItem value="parcial">Partially dependent</SelectItem>
+                      <SelectItem value="total">Fully dependent</SelectItem>
+                      <SelectItem value="independente">Not dependent</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="detalhesAdicionais">Detalhes adicionais do paciente (opcional)</Label>
+                  <Label htmlFor="detalhesAdicionais">Additional patient details (optional)</Label>
                   <Textarea 
                     id="detalhesAdicionais" 
                     name="detalhesAdicionais"
@@ -193,24 +193,24 @@ export default function CadastroPage() {
 
             {isCuidador && (
               <div className="space-y-2">
-                <Label htmlFor="referencias">Referências e experiência</Label>
+                <Label htmlFor="referencias">References and experience</Label>
                 <Input 
                   id="referencias" 
                   type="file" 
                   accept=".pdf,.doc,.docx"
                 />
-                <p className="text-sm text-gray-500">Faça upload de certificados ou documentos relevantes</p>
+                <p className="text-sm text-gray-500">Upload certificates or relevant documents</p>
               </div>
             )}
 
-            <Button type="submit" className="w-full bg-blue-600 text-white hover:bg-blue-700 hover:text-white">Concluir cadastro</Button>
+            <Button type="submit" className="w-full bg-blue-600 text-white hover:bg-blue-700 hover:text-white">Complete registration</Button>
           </form>
         </CardContent>
         <CardFooter className="flex flex-col">
           <p className="text-sm text-center text-gray-600 mt-4">
-            Já tem uma conta?{' '}
+            Already have an account?{' '}
             <Link href="/login" className="text-blue-600 hover:underline">
-              Faça login
+              Sign in
             </Link>
           </p>
         </CardFooter>

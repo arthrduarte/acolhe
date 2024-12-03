@@ -2,16 +2,16 @@ import { UserPlus, Search, MessageCircle, Star } from 'lucide-react'
 
 export default function HowItWorks() {
   const steps = [
-    { icon: UserPlus, title: 'Cadastro', description: 'Crie seu perfil familiar ou de cuidador.' },
-    { icon: Search, title: 'Busca Personalizada', description: 'Filtre cuidadores por localização, especialidade e disponibilidade.' },
-    { icon: MessageCircle, title: 'Contato Direto', description: 'Converse e contrate via WhatsApp.' },
-    { icon: Star, title: 'Avaliação', description: 'Deixe e consulte feedbacks para maior segurança.' },
+    { icon: UserPlus, title: 'Sign Up', description: 'Create your family or caregiver profile.' },
+    { icon: Search, title: 'Custom Search', description: 'Filter caregivers by location, specialty, and availability.' },
+    { icon: MessageCircle, title: 'Direct Contact', description: 'Chat and hire via WhatsApp.' },
+    { icon: Star, title: 'Reviews', description: 'Leave and check feedback for better safety.' },
   ]
 
   return (
     <section className="py-10 bg-white">
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">Como Funciona</h2>
+        <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">How It Works</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {steps.map((step, index) => (
             <div key={index} className="flex flex-col items-center text-center">

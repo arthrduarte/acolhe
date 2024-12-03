@@ -22,9 +22,9 @@ export default function LoginPage() {
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
       <Card className="w-full max-w-md">
         <CardHeader className="space-y-1">
-          <CardTitle className="text-2xl font-bold text-center">Entrar no Acolhe</CardTitle>
+          <CardTitle className="text-2xl font-bold text-center">Sign in to Acolhe</CardTitle>
           <CardDescription className="text-center">
-            Entre com seu e-mail e senha para acessar sua conta
+            Enter your email and password to access your account
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -54,7 +54,7 @@ export default function LoginPage() {
           </form>
           <div className="mt-4 text-center">
             <Link href="/forgot-password" className="text-sm text-blue-600 hover:underline">
-              Esqueci minha senha
+              Forgot my password
             </Link>
           </div>
           <div className="relative my-4">
@@ -63,7 +63,7 @@ export default function LoginPage() {
             </div>
             <div className="relative flex justify-center text-xs uppercase">
               <span className="bg-background px-2 text-muted-foreground">
-                Ou continue com
+                Or continue with
               </span>
             </div>
           </div>
@@ -80,9 +80,9 @@ export default function LoginPage() {
         </CardContent>
         <CardFooter className="flex flex-col">
           <p className="text-sm text-center text-gray-600 mt-4">
-            Não tem uma conta?{' '}
-            <Link href="/cadastro" className="text-blue-600 hover:underline">
-              Cadastre-se
+            Don't have an account?{' '}
+            <Link href="/register" className="text-blue-600 hover:underline">
+              Sign up
             </Link>
           </p>
         </CardFooter>

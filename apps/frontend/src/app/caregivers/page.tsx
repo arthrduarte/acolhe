@@ -18,7 +18,7 @@ const caregivers: Caregiver[] = [
     age: 45,
     city: "São Paulo",
     description:
-      "Cuidadora comprometida com o cuidado e conforto dos idosos, com ampla experiência.",
+      "Committed caregiver focused on elderly care and comfort, with extensive experience.",
     image: "https://via.placeholder.com/150?text=Maria+Oliveira",
   },
   {
@@ -28,7 +28,7 @@ const caregivers: Caregiver[] = [
     age: 38,
     city: "Rio de Janeiro",
     description:
-      "Cuidador formado com grande experiência em pacientes com demência.",
+      "Trained caregiver with extensive experience in dementia patients.",
     image: "https://via.placeholder.com/150?text=Carlos+Souza",
   },
   {
@@ -38,7 +38,7 @@ const caregivers: Caregiver[] = [
     age: 30,
     city: "Minas Gerais",
     description:
-      "Cuidadora atenciosa e gentil para pacientes totalmente dependentes.",
+      "Attentive and kind caregiver for fully dependent patients.",
     image: "https://via.placeholder.com/150?text=Fernanda+Costa",
   },
   {
@@ -47,7 +47,7 @@ const caregivers: Caregiver[] = [
     gender: "male",
     age: 50,
     city: "São Paulo",
-    description: "Cuidador especializado em recuperação pós cirurgia",
+    description: "Caregiver specialized in post-surgery recovery",
     image: "https://via.placeholder.com/150?text=João+Pereira",
   },
   {
@@ -57,7 +57,7 @@ const caregivers: Caregiver[] = [
     age: 35,
     city: "Rio de Janeiro",
     description:
-      "Cuidadora bilíngue que oferece serviços em portugês e inglês.",
+      "Bilingual caregiver offering services in Portuguese and English.",
     image: "https://via.placeholder.com/150?text=Ana+Ribeiro",
   },
   {
@@ -66,7 +66,7 @@ const caregivers: Caregiver[] = [
     gender: "female",
     age: 28,
     city: "São Paulo",
-    description: "Cuidadora apaixonada com foco em pacientes com Alzheimer.",
+    description: "Passionate caregiver focused on Alzheimer's patients.",
     image: "https://via.placeholder.com/150?text=Clara+Almeida",
   },
 ];
@@ -74,29 +74,26 @@ const caregivers: Caregiver[] = [
 const CaregiversPage = () => {
   const [filteredCaregivers, setFilteredCaregivers] =
     useState<Caregiver[]>(caregivers);
-  const [age, setAge] = useState<[number, number] | undefined>(undefined); // Age as a tuple for min and max
+  const [age, setAge] = useState<[number, number] | undefined>(undefined);
   const [city, setCity] = useState<string>("");
   const [gender, setGender] = useState<string>("");
 
   const handleFilterChange = () => {
     let filteredList = caregivers;
 
-    // Age Filter
     if (age) {
-      const [minAge, maxAge] = age; // Assuming `age` is an array with [minAge, maxAge]
+      const [minAge, maxAge] = age;
       filteredList = filteredList.filter(
         (caregiver) => caregiver.age >= minAge && caregiver.age <= maxAge
       );
     }
 
-    // City Filter
     if (city) {
       filteredList = filteredList.filter((caregiver) =>
         caregiver.city.toLowerCase().includes(city.toLowerCase())
       );
     }
 
-    // Gender Filter
     if (gender) {
       filteredList = filteredList.filter(
         (caregiver) => caregiver.gender === gender
@@ -106,33 +103,31 @@ const CaregiversPage = () => {
     setFilteredCaregivers(filteredList);
   };
 
-  // Clear all filters
   const clearFilters = () => {
-    setAge(undefined); // Reset age filter
-    setCity(""); // Reset city filter
-    setGender(""); // Reset gender filter
-    setFilteredCaregivers(caregivers); // Reset filtered list to original caregivers list
+    setAge(undefined);
+    setCity("");
+    setGender("");
+    setFilteredCaregivers(caregivers);
   };
 
   return (
     <div className="container mx-auto py-10">
-      <h1 className="text-4xl font-bold mb-6">Cuidadores Disponíveis</h1>
+      <h1 className="text-4xl font-bold mb-6">Available Caregivers</h1>
 
       <Accordion type="single" collapsible>
         <AccordionItem value="item-1">
-          <AccordionTrigger className="text-xl">Filtros</AccordionTrigger>
+          <AccordionTrigger className="text-xl">Filters</AccordionTrigger>
           <AccordionContent>
             <div className="mb-6">
-              {/* Age Range Filter */}
               <div className="mb-4">
                 <label htmlFor="minAge" className="block text-lg">
-                  Idade
+                  Age
                 </label>
                 <div className="flex gap-4 mt-2">
                   <input
                     id="minAge"
                     type="number"
-                    placeholder="Idade Mínima"
+                    placeholder="Minimum Age"
                     value={age?.[0] || ""}
                     onChange={(e) =>
                       setAge([Number(e.target.value), age ? age[1] : 100])
@@ -142,7 +137,7 @@ const CaregiversPage = () => {
                   <input
                     id="maxAge"
                     type="number"
-                    placeholder="Idade Máxima"
+                    placeholder="Maximum Age"
                     value={age?.[1] || ""}
                     onChange={(e) =>
                       setAge([age ? age[0] : 0, Number(e.target.value)])
@@ -152,24 +147,22 @@ const CaregiversPage = () => {
                 </div>
               </div>
 
-              {/* City Filter */}
               <div className="mb-4">
                 <label htmlFor="city" className="block text-lg">
-                  Cidade
+                  City
                 </label>
                 <input
                   id="city"
                   type="text"
-                  placeholder="Cidade"
+                  placeholder="City"
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
                   className="mt-2 p-2 border rounded"
                 />
               </div>
 
-              {/* Gender Filter */}
               <div className="mb-4">
-                <span className="text-lg">Gênero</span>
+                <span className="text-lg">Gender</span>
                 <div className="mt-2 flex gap-4">
                   <label>
                     <input
@@ -181,7 +174,7 @@ const CaregiversPage = () => {
                       }
                       className="mr-2"
                     />
-                    Feminino
+                    Female
                   </label>
                   <label>
                     <input
@@ -193,37 +186,34 @@ const CaregiversPage = () => {
                       }
                       className="mr-2"
                     />
-                    Masculino
+                    Male
                   </label>
                 </div>
               </div>
 
-              {/* Apply Filters Button */}
               <button
                 onClick={handleFilterChange}
                 className="px-4 py-2 bg-blue-500 text-white rounded mr-4"
               >
-                Aplicar Filtros
+                Apply Filters
               </button>
 
-              {/* Clear Filters Button */}
               <button
                 onClick={clearFilters}
                 className="px-4 py-2 bg-gray-500 text-white rounded"
               >
-                Limpar Filtros
+                Clear Filters
               </button>
             </div>
           </AccordionContent>
         </AccordionItem>
       </Accordion>
 
-      {/* Caregivers List */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 object-center">
         {filteredCaregivers.map((caregiver) => (
           <Link
             key={caregiver.id}
-            href={`/cuidadores/${caregiver.id}`}
+            href={`/caregivers/${caregiver.id}`}
             className="block bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
           >
             <Image
